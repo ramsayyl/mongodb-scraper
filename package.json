@@ -1,0 +1,28 @@
+{
+  "name": "mongodb-scraper",
+  "version": "1.0.0",
+  "description": "Web Scraping Articles with MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramsayyl/mongodb-scraper.git"
+  },
+  "author": "Luke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramsayyl/mongodb-scraper/issues"
+  },
+  "homepage": "https://github.com/ramsayyl/mongodb-scraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.18",
+    "morgan": "^1.9.1"
+  }
+}
