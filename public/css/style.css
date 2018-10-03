@@ -1,0 +1,68 @@
+body {
+  background-color: #fff;
+}
+
+#wrapper {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10%;
+}
+#articles {
+  display: inline-block;
+  overflow: auto;
+  width: 55%;
+  height: auto;
+}
+#comments {
+  float: right;
+  padding: 10px;
+  width: 35%;
+}
+
+#comments button {
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+
+}
+
+#comments h2 {
+  color: #601390;
+}
+
+#comments .titleinput, .bodyinput {
+  color: #696969;
+  font-family: verdana;
+}
+
+.heading {
+  letter-spacing: 2px;
+  font-family: Verdana;
+  text-transform: uppercase;
+  background-color: #A020F0;
+  color: #fff;
+  width: 50%;
+  margin-bottom: 20px;
+
+}
+
+textarea, input {
+  border-radius: 5px;
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  background-color: #FCF5C7;
+  border-color: #A020F0;
+  color: #808080;
+}
+input {
+  border-radius: 5px;
+  height: 36px;
+  font-size: 24px;
+}
+textarea {
+  border-radius: 5px;
+  height: 200px;
+  font-size: 18px;
+}
