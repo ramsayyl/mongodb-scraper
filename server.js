@@ -5,13 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cheerio = require('cheerio');
 var axios = require('axios');
-
 var db = require('./models');
-
-var PORT = process.env.PORT || 3000;
-
-var app = express();
-
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
@@ -28,6 +22,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
+var PORT = process.env.PORT || 3000;
+var app = express();
 //  Route to scrape ESPN
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
