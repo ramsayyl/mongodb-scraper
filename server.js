@@ -7,13 +7,6 @@ var cheerio = require('cheerio');
 var axios = require('axios');
 var db = require('./models');
 
-// Use morgan logger for logging requests
-app.use(logger("dev"));
-// Use body-parser for handling form submissions
-app.use(bodyParser.urlencoded({ extended: true }));
-// Use express.static to serve the public folder as a static directory
-app.use(express.static("public"));
-
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
@@ -24,6 +17,13 @@ mongoose.connect(MONGODB_URI);
 
 var PORT = process.env.PORT || 3000;
 var app = express();
+// Use morgan logger for logging requests
+app.use(logger("dev"));
+// Use body-parser for handling form submissions
+app.use(bodyParser.urlencoded({ extended: true }));
+// Use express.static to serve the public folder as a static directory
+app.use(express.static("public"));
+
 //  Route to scrape ESPN
 app.get("/", function(req, res) {
   // First, we grab the body of the html with request
