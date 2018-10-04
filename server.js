@@ -40,10 +40,10 @@ app.get("/", function(req, res) {
 
       // Add the text and href of every link, and save them as properties of the result object
       result.headline = $(this)
-         .find("contentItem_title")
+         .find("contentItem__title")
          .text();
       result.summary = $(this)
-        .find("contentItem_subhead")
+        .find("contentItem__subhead")
         .text();
       result.link = $(this)
         .children("a")
@@ -61,37 +61,36 @@ app.get("/", function(req, res) {
         });
     });
 
-    res.send("Scrape Complete");
   });
 });
 
-// Route for getting all Articles from the db
-app.get("/articles", function(req, res) {
-
-  db.Article.find({})
-    .then(function(dbArticle) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
-      res.json(err);
-    });
-});
-
-// Route for grabbing a specific Article by id, populate it with it's comment
-app.get("/articles/:id", function(req, res) {
-  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-  db.Article.findOne({ _id: req.params.id })
-    // ..and populate all of the notes associated with it
-    .populate("comment")
-    .then(function(dbArticle) {
-      // If we were able to successfully find an Article with the given id, send it back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
-      res.json(err);
-    });
-});
+// // Route for getting all Articles from the db
+// app.get("/articles", function(req, res) {
+//
+//   db.Article.find({})
+//     .then(function(dbArticle) {
+//       // If we were able to successfully find Articles, send them back to the client
+//       res.json(dbArticle);
+//     })
+//     .catch(function(err) {
+//       res.json(err);
+//     });
+// });
+//
+// // Route for grabbing a specific Article by id, populate it with it's comment
+// app.get("/articles/:id", function(req, res) {
+//   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+//   db.Article.findOne({ _id: req.params.id })
+//     // ..and populate all of the notes associated with it
+//     .populate("comment")
+//     .then(function(dbArticle) {
+//       // If we were able to successfully find an Article with the given id, send it back to the client
+//       res.json(dbArticle);
+//     })
+//     .catch(function(err) {
+//       res.json(err);
+//     });
+// });
 
 
 app.listen(PORT, function() {
