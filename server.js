@@ -25,7 +25,7 @@ mongoose.connect(MONGODB_URI);
 var PORT = process.env.PORT || 3000;
 var app = express();
 //  Route to scrape ESPN
-app.get("/scrape", function(req, res) {
+app.get("/", function(req, res) {
   // First, we grab the body of the html with request
   axios.get("http://www.espn.com/soccer/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -97,21 +97,6 @@ app.get("/articles/:id", function(req, res) {
     });
 });
 
-// Route for saving/updating an Article's associated Note
-app.post("/articles/:id", function(req, res) {
-  // Create a new comment and pass the req.body to the entry
-  db.Comment.create(req.body)
-    .then(function(dbComment) {
-      return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true });
-    })
-    .then(function(dbArticle) {
-      // If we were able to successfully update an Article, send it back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
-      res.json(err);
-    });
-});
 
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
