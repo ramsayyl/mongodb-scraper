@@ -15,8 +15,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
-var PORT = process.env.PORT || 3000;
 var app = express();
+var PORT = process.env.PORT || 3000;
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
